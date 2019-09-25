@@ -11,6 +11,7 @@ abstract class BenchmarkConf(args: Array[String]) extends ScallopConf(args) {
   val runTimeInSec = opt[Long](name = "run-time-in-sec", required = true, noshort = true)
   val useRocksDB = opt[Boolean](name = "use-rocks-db", default = Option(false), required = true, noshort = true)
   val numShufflePartition = opt[Int](name = "shuffle-partition", default = Option(8), required = true, noshort = true)
+  val triggerIntervalMillis = opt[Long]("trigger-interval", default=Option(30000L), required = true, noshort = true)
 
   val outputMode = opt[String](name = "output-mode", required = true, noshort = true,
     validate = (s: String) => validOutputModes.map(_.toLowerCase()).contains(s.toLowerCase()))

@@ -14,6 +14,7 @@ abstract class BaseQuery(conf: StateStoreBenchmarkConf, appName: String, queryNa
     val queryStatusFile = conf.queryStatusFile()
     val rateRowPerSecond = conf.rateRowPerSecond()
     val runTimeInSec = conf.runTimeInSec()
+    val triggerIntervalMillis = conf.triggerIntervalMillis()
 
     val spark = SparkSession
       .builder()
@@ -51,7 +52,7 @@ abstract class BaseQuery(conf: StateStoreBenchmarkConf, appName: String, queryNa
             }
         }
     )
-      .trigger(Trigger.ProcessingTime("30 seconds"))
+      .trigger(Trigger.ProcessingTime(triggerIntervalMillis))
       .outputMode(conf.getSparkOutputMode)
       .start()
 
