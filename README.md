@@ -22,6 +22,7 @@ I have created this project in similar lines for streaming performance scenarios
         --rate-row-per-second "20000" \
         --output-mode "append" \
         --run-time-in-sec 1800 \
+        --trigger-interval 60000 \
         --shuffle-partition 8 \
         --use-rocks-db
 
@@ -39,7 +40,8 @@ I have created this project in similar lines for streaming performance scenarios
         --rate-row-per-second "20000" \
         --output-mode "append" \
         --run-time-in-sec 1800 \
-        --shuffle-partition 8 \
+        --trigger-interval 60000 \
+        --shuffle-partition 8
 
 ###### Analyze the progress
         /usr/lib/spark/bin/spark-submit \
